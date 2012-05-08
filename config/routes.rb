@@ -1,6 +1,7 @@
 ProjectIiBlog::Application.routes.draw do
 
-	resources :posts, :only => [:index]
+	resources :posts
+	#resources :posts, :only => [:index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -9,7 +10,7 @@ ProjectIiBlog::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  #   match 'produrails g controller Posts index -s # -s : skip existing filescts/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
