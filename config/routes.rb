@@ -1,6 +1,15 @@
 ProjectIiBlog::Application.routes.draw do
 
+	# ROOT
+	root :to => 'posts#index'
+
+	# POSTS
 	resources :posts
+
+	# COMMENTS
+	match '/posts/:post_id/comments' => 'comments#create', :via => :post
+	match '/posts/:post_id/comments/:id' => 'comments#destroy', :via => :delete, :as => :comment
+
 	#resources :posts, :only => [:index]
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,23 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.body %><p>
+<br />
+
+
+<% @post.comments.all.each do |comment| %>
+	<li><%= comment.writer %> <br /> <%= comment.body %> <br /> <%= link_to 'Delete', comment_path(@post, comment), method: :delete %></li> <br /> 
+<% end %>
+
+
+<%= form_tag("/posts/#{@post.id}/comments", :method => "post") do %>
+<%= label(:comment, :writer, "Writer :") %>
+<%= text_field(:comment, :writer) %>
+<br/>
+<%= label(:comment, :body, "Body :") %>
+<br/>
+<%= text_area(:comment, :body) %>
+<br/>
+<%= submit_tag("Add a comment") %>
+<% end %>
+
+
+<%= link_to 'Index', posts_path %>
