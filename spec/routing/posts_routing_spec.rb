@@ -19,6 +19,10 @@ describe PostsController do
 	it "should route to #create" do
 		post('/posts').should route_to("posts#create")
 	end
+
+	it "should route to #destroy" do
+		delete('/posts/1').should route_to("posts#destroy", :id=>"1")
+	end
 	
 end
 
