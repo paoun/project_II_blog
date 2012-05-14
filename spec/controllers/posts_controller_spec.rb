@@ -67,12 +67,7 @@ describe PostsController do
 			@params={:id=>"1"}
 		end
 
-		it "should use the 'find' method to find a post" do
-			Post.should_receive(:find).with("1")
-			delete 'destroy', @params
-		end
-
-		it "should use the 'destroy' method to delete the post" do
+		it "should delete the post" do
 			@post.should_receive(:destroy)
 			delete 'destroy', @params
 		end

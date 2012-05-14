@@ -16,11 +16,6 @@ describe CommentsController do
 			@params={:post_id => 1, :comment => {"writer" => "TFC", "body" => "Allez le tef!"}}
 		end
 
-		it "should use the 'find' method" do
-			Post.should_receive(:find).with("1")
-			post 'create', @params
-		end
-
 		it "should create a new comment" do
 			@comment.should_receive(:create).with("writer" => "TFC", "body" => "Allez le tef!")
 			post 'create', @params
@@ -41,18 +36,7 @@ describe CommentsController do
 			@params={:post_id => 1, :id => 1}
 		end
 
-		it "should use the 'find' method to find a post" do
-			Post.should_receive(:find).with("1")
-			delete 'destroy', @params
-		end
-
-		it "should use the 'find' method to find a comment" do
-			@post.should_receive(:comments)
-			@comment.should_receive(:find).with("1")
-			delete 'destroy', @params
-		end
-
-		it "should use the 'destroy' method to delete a comment" do
+		it "should delete a comment" do
 			@comment.should_receive(:destroy)
 			delete 'destroy', @params
 		end

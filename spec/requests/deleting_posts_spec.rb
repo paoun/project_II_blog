@@ -9,7 +9,7 @@ describe "DeletingPosts" do
       @post2 = Post.create(:title => "Topic2", :body => "My name is Bond, James Bond!")
     end
 
-		it "should have a link by post in the listing posts page to delete a post" do
+		it "should have a link to delete a post" do
 			visit posts_path
 			page.should have_link('Delete', :href => post_path(@post1))
 			page.should have_link('Delete', :href => post_path(@post2))
@@ -22,7 +22,7 @@ describe "DeletingPosts" do
 			page.should have_content(@post2.title)
 		end
 
-		it "should redirect to the listing posts page (the page where we are)" do
+		it "should redirect to the listing posts page" do
 			visit posts_path
 			click_link('Delete')
 			current_path.should == posts_path
